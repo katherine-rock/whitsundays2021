@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :activities
+  resources :links
   devise_for :users
   get 'home/page'
   root 'home#page'

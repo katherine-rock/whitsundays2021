@@ -1,0 +1,27 @@
+<h1>Links</h1>
+ <% @links.each do | link | %>
+
+    <% if link.title? %>
+        <strong>Title: </strong><%= link.title %>
+    <% else %>
+        <&nbsp;>
+    <% end %>
+
+    <% if link.link? %>
+        <strong>Link: </strong><%= link.link %>
+    <% else %>
+        <&nbsp;>
+    <% end %>
+
+    <% if link.description? %>
+        <strong>Description: </strong><%= sanitize(link.description) %>
+    <% else %>
+        <&nbsp;>
+    <% end %>
+
+    <% if link.category? %>
+        <strong>Category: </strong><%= sanitize(link.category) %>
+    <% else %>
+        <&nbsp;>
+    <% end %>
+<% end %>
