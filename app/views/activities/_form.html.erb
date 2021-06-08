@@ -1,0 +1,45 @@
+<section class="upload_form">
+  <%= form_with(model: activity) do |form| %>
+    <% if activity.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+
+        <ul>
+          <% activity.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :title %><%= "*"%>
+      <%= form.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_area :description %>
+    </div>
+
+    <div class="field">
+      <%= form.label :date %>
+      <%= form.date_field :date %>
+    </div>
+
+    <div class="field">
+      <%= form.label :time %>
+      <%= form.time_field :time %>
+    </div>
+
+    <br>
+
+    <div class="actions upload_button">
+      <%= form.submit %>
+    </div>
+
+    <br>
+
+  <% end %>
+
+</section>

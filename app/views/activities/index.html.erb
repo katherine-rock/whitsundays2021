@@ -1,0 +1,33 @@
+<h1>Itinerary</h1>
+ <% @activities.each do | activity | %>
+
+    <% if activity.date? %>
+        <strong>Date: </strong><%= activity.date %>
+    <% else %>
+        <&nbsp;>
+    <% end %>
+
+    <% if activity.time? %>
+        <strong>Time: </strong><%= activity.time %>
+    <% else %>
+        <&nbsp;>
+    <% end %>
+
+    <% if activity.title? %>
+        <strong>Title: </strong><%= sanitize(activity.title) %>
+    <% else %>
+        <&nbsp;>
+    <% end %>
+
+    <% if activity.description? %>
+        <strong>Date: </strong><%= sanitize(activity.description) %>
+    <% else %>
+        <&nbsp;>
+    <% end %>
+<% end %>
+
+
+
+
+
+<p>KR to organise these by date</p>
