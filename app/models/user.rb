@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :activities
   has_many :links
   has_many :documents
+  has_many :posts
 end

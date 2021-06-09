@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
-  # get 'documents/index'
-  # get 'documents/show'
-  # get 'documents/edit'
-  # get 'documents/new'
   resources :activities
   resources :links
   resources :documents
+  resources :posts
   devise_for :users
   get 'home/page'
   root 'home#page'
