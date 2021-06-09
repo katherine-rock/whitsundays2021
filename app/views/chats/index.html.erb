@@ -1,0 +1,17 @@
+<h1>Chat</h1>
+ <% @chats.each do | chat | %>
+
+    <% if chat.comment? %>
+        <%= chat.comment %>
+    <% else %>
+        <&nbsp;>
+    <% end %>
+
+    <span>From </span>
+    <%= chat.user.firstname %> 
+    <span>at </span>
+    <%= chat.created_at.strftime("%l:%M %P") %>
+    <span>on </span>
+    <%= chat.created_at.strftime("%A %-d-%b-%Y") %> 
+
+<% end %>

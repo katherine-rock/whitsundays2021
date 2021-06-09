@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :links
   has_many :documents
   has_many :posts
+  has_many :chats
 end

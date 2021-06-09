@@ -1,0 +1,30 @@
+<section class="upload_form">
+  <%= form_with(model: chat) do |form| %>
+    <% if chat.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(chat.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+        <ul>
+          <% chat.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :comment %><%= "*"%>
+      <%= form.text_area :comment %>
+    </div>
+
+    <br>
+
+    <div class="actions upload_button">
+      <%= form.submit %>
+    </div>
+
+    <br>
+
+  <% end %>
+
+</section>

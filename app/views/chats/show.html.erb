@@ -1,0 +1,37 @@
+<h1>Comment</h1>
+
+<p>
+    <strong>Comment:</strong>
+    <%= sanitize(@chat.comment) %>
+</p>
+
+<p>
+    <strong>Added by:</strong>
+    <%= @chat.user.firstname %>
+</p>
+
+<p>
+    <strong>Added on:</strong>
+    <%= @chat.created_at.strftime("%A %-d-%b-%Y") %>
+</p>
+
+<p>
+    <strong>Added at:</strong>
+    <%= @chat.created_at.strftime("%l:%M %P") %>
+</p>
+
+<br>
+
+<% if user_signed_in? %>
+    <% if @chat.user_id == current_user.id %>
+        <button type="button" class="btn btn-info">
+        <%= link_to 'Edit', edit_chat_path(@chat) %>
+        </button>
+    <% end %>
+<% end %>
+
+<button type="button" class="btn btn-info">
+<%= link_to 'Back', chats_path %>
+</button>
+
+<br>

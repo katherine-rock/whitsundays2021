@@ -19,7 +19,7 @@
         <&nbsp;>
     <% end %>
 
-<%= link_to 'Download file', rails_blob_url(document.file, disposition: "attachment") %>
 
+<%= link_to "Download #{document.title}", rails_blob_url(document.file, disposition: "attachment") %>
 
 <% end %>

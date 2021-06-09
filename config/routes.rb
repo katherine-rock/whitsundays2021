@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :links
   resources :documents
   resources :posts
+  resources :chats
   devise_for :users
   get 'home/page'
   root 'home#page'
