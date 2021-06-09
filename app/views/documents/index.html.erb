@@ -1,0 +1,25 @@
+<h1>Documents</h1>
+ <% @documents.each do | document | %>
+
+    <% if document.title? %>
+        <strong>Title: </strong><%= document.title %>
+    <% else %>
+        <&nbsp;>
+    <% end %>
+
+    <% if document.description? %>
+        <strong>Description: </strong><%= sanitize(document.description) %>
+    <% else %>
+        <&nbsp;>
+    <% end %>
+
+    <% if document.category? %>
+        <strong>Category: </strong><%= sanitize(document.category) %>
+    <% else %>
+        <&nbsp;>
+    <% end %>
+
+<%= link_to 'Download file', rails_blob_url(document.file, disposition: "attachment") %>
+
+
+<% end %>

@@ -1,0 +1,44 @@
+<h1>
+<%= sanitize(@document.title) %>
+</h1>
+
+<p>
+<strong>Title:</strong>
+<%= @document.title %>
+</p>
+
+<p>
+<strong>Description:</strong>
+<%= sanitize(@document.description) %>
+</p>
+
+<p>
+<strong>Category:</strong>
+<%= @document.category %>
+</p>
+
+<p>
+<button>
+    <%= link_to 'Download file', rails_blob_url(@document.file, disposition: "attachment") %>
+</button>
+</p>
+
+      <%# <button type="button" class="btn btn-primary">
+        <%= link_to 'Learn More', photo %>
+      <%# </button> %> %>
+
+<br>
+
+<% if user_signed_in? %>
+    <% if @document.user_id == current_user.id %>
+        <button type="button" class="btn btn-info">
+        <%= link_to 'Edit', edit_document_path(@document) %>
+        </button>
+    <% end %>
+<% end %>
+
+<button type="button" class="btn btn-info">
+<%= link_to 'Back', documents_path %>
+</button>
+
+<br>

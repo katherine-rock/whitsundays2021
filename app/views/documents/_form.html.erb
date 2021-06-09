@@ -1,0 +1,45 @@
+<section class="upload_form">
+  <%= form_with(model: document) do |form| %>
+    <% if document.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(document.errors.count, "error") %> prohibited this document from being saved:</h2>
+
+        <ul>
+          <% document.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_area :description %>
+    </div>
+
+    <div class="field">
+      <%= form.label :category %>
+      <%= form.text_field :category %>
+    </div>
+
+    <div class="field">
+      <%= form.label :file %>
+      <%= form.file_field :file %>
+    </div>
+
+    <br>
+
+    <div class="actions upload_button">
+      <%= form.submit %>
+    </div>
+
+    <br>
+
+  <% end %>
+
+</section>
