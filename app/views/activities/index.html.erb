@@ -1,33 +1,32 @@
 <h1>Itinerary</h1>
+
  <% @activities.each do | activity | %>
 
     <% if activity.date? %>
-        <strong>Date: </strong><%= activity.date %>
+        <strong>Date: </strong><%= activity.date.strftime("%A %-d-%b-%Y") %>
     <% else %>
-        <&nbsp;>
+        &nbsp;
     <% end %>
 
     <% if activity.time? %>
-        <strong>Time: </strong><%= activity.time %>
+        <strong>Time: </strong><%= activity.time.strftime("%l:%M %P") %>
     <% else %>
-        <&nbsp;>
+        &nbsp;
     <% end %>
 
     <% if activity.title? %>
         <strong>Title: </strong><%= sanitize(activity.title) %>
     <% else %>
-        <&nbsp;>
+        &nbsp;
     <% end %>
 
     <% if activity.description? %>
         <strong>Date: </strong><%= sanitize(activity.description) %>
     <% else %>
-        <&nbsp;>
+        &nbsp;
     <% end %>
 <% end %>
 
+<br>
 
-
-
-
-<p>KR to organise these by date</p>
+<%= link_to 'Add a New Activity', new_activity_path %>

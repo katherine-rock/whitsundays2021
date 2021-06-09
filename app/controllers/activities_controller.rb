@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
   # before_action :authenticate_user!, only: %i[ new create edit update destroy ]
 
   def index
-    @activities = Activity.all
+    @activities = Activity.all.sort
   end
 
   def show

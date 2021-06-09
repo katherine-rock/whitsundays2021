@@ -2,25 +2,32 @@
 <%= sanitize(@activity.title) %>
 </h1>
 
-<p>
-<strong>Description:</strong>
-<%= sanitize(@activity.description) %>
-</p>
+<% if @activity.description?%>
+    <p>
+    <strong>Description:</strong>
+    <%= sanitize(@activity.description) %>
+    </p>
+<% else %>
+    &nbsp;
+<% end %>
 
-<p>
-<strong>Date:</strong>
-<%= @activity.date %>
-</p>
+<% if @activity.date?%>
+    <p>
+    <strong>Date:</strong>
+    <%= @activity.date.strftime("%A %-d-%b-%Y") %>
+    </p>
+<% else %>
+    &nbsp;
+<% end %>
 
-<p>
-<strong>Time:</strong>
-<%= @activity.time %>
-</p>
-
-<p>
-<strong>Date Added:</strong>
-<%= @activity.created_at.strftime("%d/%m/%Y") %>
-</p>
+<% if @activity.time?%>
+    <p>
+    <strong>Time:</strong>
+    <%= @activity.time.strftime("%l:%M %P") %>
+    </p>
+<% else %>
+    &nbsp;
+<% end %>
 
 <br>
 

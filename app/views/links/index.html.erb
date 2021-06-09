@@ -1,27 +1,27 @@
 <h1>Links</h1>
  <% @links.each do | link | %>
 
-    <% if link.title? %>
-        <strong>Title: </strong><%= link.title %>
+    <% if link.title? && link.link? %>
+        <%= link_to "#{link.title}", link.link, target: "blank" %>
     <% else %>
-        <&nbsp;>
+        &nbsp;
     <% end %>
 
     <% if link.link? %>
-        <strong>Link: </strong><%= link.link %>
+        <%= link.link %>
     <% else %>
-        <&nbsp;>
+        &nbsp;
     <% end %>
 
     <% if link.description? %>
         <strong>Description: </strong><%= sanitize(link.description) %>
     <% else %>
-        <&nbsp;>
+        &nbsp;
     <% end %>
 
     <% if link.category? %>
         <strong>Category: </strong><%= sanitize(link.category) %>
     <% else %>
-        <&nbsp;>
+        &nbsp;
     <% end %>
 <% end %>
