@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_09_052757) do
+ActiveRecord::Schema.define(version: 2021_06_09_084141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,20 @@ ActiveRecord::Schema.define(version: 2021_06_09_052757) do
     t.index ["user_id"], name: "index_chats_on_user_id"
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "category"
+    t.string "email"
+    t.string "phone"
+    t.string "company"
+    t.text "comment"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_contacts_on_user_id"
+  end
+
   create_table "documents", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -111,6 +125,7 @@ ActiveRecord::Schema.define(version: 2021_06_09_052757) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "users"
   add_foreign_key "chats", "users"
+  add_foreign_key "contacts", "users"
   add_foreign_key "documents", "users"
   add_foreign_key "links", "users"
   add_foreign_key "posts", "users"

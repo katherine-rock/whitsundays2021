@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :documents
   has_many :posts
   has_many :chats
+  has_many :contacts
 end

@@ -1,0 +1,46 @@
+<h1>Contacts</h1>
+ <% @contacts.each do | contact | %>
+
+    <% if contact.firstname? %>
+        <%= contact.firstname %>
+    <% else %>
+        &nbsp;
+    <% end %>
+
+    <% if contact.lastname? %>
+        <%= contact.lastname %>
+    <% else %>
+        &nbsp;
+    <% end %>
+
+    <% if contact.category? %>
+        <%= contact.category %>
+    <% else %>
+        &nbsp;
+    <% end %>
+
+    <% if contact.email? %>
+        <%= contact.email %>
+    <% else %>
+        &nbsp;
+    <% end %>
+
+    <% if contact.phone? %>
+        <%= contact.phone %>
+    <% else %>
+        &nbsp;
+    <% end %>
+
+    <% if contact.company? %>
+        <%= contact.company %>
+    <% else %>
+        &nbsp;
+    <% end %>
+
+    <% if contact.comment? %>
+        <%= contact.comment %>
+    <% else %>
+        &nbsp;
+    <% end %>
+
+<% end %>
