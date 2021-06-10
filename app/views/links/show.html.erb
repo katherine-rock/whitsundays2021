@@ -1,39 +1,41 @@
-<h1>
-<%= sanitize(@link.title) %>
-</h1>
+<div class="container">
+    <h1>
+    <%= sanitize(@link.title) %>
+    </h1>
 
-<p>
-<strong>Link:</strong>
-<%= link_to "#{@link.link}", @link.link, target: "blank" %>
-</p>
+    <p>
+    <strong>Link:</strong>
+    <%= link_to "#{@link.link}", @link.link, target: "blank" %>
+    </p>
 
-<p>
-<strong>Title:</strong>
-<%= @link.title %>
-</p>
+    <p>
+    <strong>Title:</strong>
+    <%= @link.title %>
+    </p>
 
-<p>
-<strong>Description:</strong>
-<%= sanitize(@link.description) %>
-</p>
+    <p>
+    <strong>Description:</strong>
+    <%= sanitize(@link.description) %>
+    </p>
 
-<p>
-<strong>Category:</strong>
-<%= @link.category %>
-</p>
+    <p>
+    <strong>Category:</strong>
+    <%= @link.category %>
+    </p>
 
-<br>
+    <br>
 
-<% if user_signed_in? %>
-    <% if @link.user_id == current_user.id %>
-        <button type="button" class="btn btn-info">
-        <%= link_to 'Edit', edit_link_path(@link) %>
-        </button>
+    <% if user_signed_in? %>
+        <% if @link.user_id == current_user.id %>
+            <button type="button" class="btn btn-outline-primary">
+            <%= link_to 'Edit', edit_link_path(@link) %>
+            </button>
+        <% end %>
     <% end %>
-<% end %>
 
-<button type="button" class="btn btn-info">
-<%= link_to 'Back', links_path %>
-</button>
+    <button type="button" class="btn btn-outline-primary">
+        <%= link_to 'Back', links_path %>
+    </button>
 
-<br>
+    <br>
+</div>

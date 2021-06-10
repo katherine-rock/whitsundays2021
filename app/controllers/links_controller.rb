@@ -3,7 +3,7 @@ class LinksController < ApplicationController
     # before_action :authenticate_user!, only: %i[ new create edit update destroy ]
   
     def index
-      @links = Link.all
+      @links = Link.all.order(:category)
     end
   
     def show

@@ -1,27 +1,63 @@
-<h1>Links</h1>
- <% @links.each do | link | %>
+<div class="container">
+    <h1>Links</h1>
 
+    <table class="table">
+        <thead>
+            <tr>
+            <th>Category</th>
+            <th>Title</th>
+            <th>URL</th>
+            <th>Description</th>
+            <th colspan="3">Options</th>
+            </tr>
+        </thead>
+
+    <tbody>
+        <% @links.each do | link | %>
+    <tr>
+
+    <td>
+    <% if link.category? %>
+        <%= sanitize(link.category) %>
+    <% else %>
+        &nbsp;
+    <% end %>
+    </td>
+
+<td>
     <% if link.title? && link.link? %>
         <%= link_to "#{link.title}", link.link, target: "blank" %>
     <% else %>
         &nbsp;
     <% end %>
+    </td>
 
+<td>
     <% if link.link? %>
         <%= link.link %>
     <% else %>
         &nbsp;
     <% end %>
+    </td>
 
+<td>
     <% if link.description? %>
-        <strong>Description: </strong><%= sanitize(link.description) %>
+        <%= sanitize(link.description) %>
     <% else %>
         &nbsp;
     <% end %>
+</td>
+        <td><%= link_to 'View Details', link %></td>
+        <td><%= link_to 'Edit', edit_link_path(link) %></td>
+        <td><%= link_to 'Delete', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
 
-    <% if link.category? %>
-        <strong>Category: </strong><%= sanitize(link.category) %>
-    <% else %>
-        &nbsp;
-    <% end %>
 <% end %>
+    </tbody>
+    </table>
+
+    <button type="button" class="btn btn-outline-primary">  
+        <%= link_to 'Add a New Link', new_link_path %>
+    </button>
+
+</div>
