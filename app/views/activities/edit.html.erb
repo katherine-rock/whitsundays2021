@@ -1,10 +1,12 @@
-<h1>Edit Activity</h1>
+<div class="container">
+    <h1>Edit Activity</h1>
 
-<%= render 'form', activity: @activity %>
+    <%= render 'form', activity: @activity %>
 
-<section class="grouped_buttons">
-    <button type="button" class="btn btn-info">
-        <%= link_to 'Show', @activity %> 
-    </button >
+    <section class="grouped_buttons">
+        <button type="button" class="btn btn-outline-primary">
+            <%= link_to 'View Activity', @activity %> 
+        </button >
 
-</section>
+    </section>
+</div>

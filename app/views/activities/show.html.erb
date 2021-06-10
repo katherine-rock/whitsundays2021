@@ -1,46 +1,48 @@
-<h1>
-<%= sanitize(@activity.title) %>
-</h1>
+<div class="container">    
+    <h1>
+    <%= sanitize(@activity.title) %>
+    </h1>
 
-<% if @activity.description?%>
-    <p>
-    <strong>Description:</strong>
-    <%= sanitize(@activity.description) %>
-    </p>
-<% else %>
-    &nbsp;
-<% end %>
-
-<% if @activity.date?%>
-    <p>
-    <strong>Date:</strong>
-    <%= @activity.date.strftime("%A %-d-%b-%Y") %>
-    </p>
-<% else %>
-    &nbsp;
-<% end %>
-
-<% if @activity.time?%>
-    <p>
-    <strong>Time:</strong>
-    <%= @activity.time.strftime("%l:%M %P") %>
-    </p>
-<% else %>
-    &nbsp;
-<% end %>
-
-<br>
-
-<% if user_signed_in? %>
-    <% if @activity.user_id == current_user.id %>
-        <button type="button" class="btn btn-info">
-        <%= link_to 'Edit', edit_activity_path(@activity) %>
-        </button>
+    <% if @activity.description?%>
+        <p>
+        <strong>Description:</strong>
+        <%= sanitize(@activity.description) %>
+        </p>
+    <% else %>
+        &nbsp;
     <% end %>
-<% end %>
 
-<button type="button" class="btn btn-info">
-<%= link_to 'Back', activities_path %>
-</button>
+    <% if @activity.date?%>
+        <p>
+        <strong>Date:</strong>
+        <%= @activity.date.strftime("%A %-d-%b-%Y") %>
+        </p>
+    <% else %>
+        &nbsp;
+    <% end %>
 
-<br>
+    <% if @activity.time?%>
+        <p>
+        <strong>Time:</strong>
+        <%= @activity.time.strftime("%l:%M %P") %>
+        </p>
+    <% else %>
+        &nbsp;
+    <% end %>
+
+    <br>
+
+    <% if user_signed_in? %>
+        <% if @activity.user_id == current_user.id %>
+            <button type="button" class="btn btn-outline-primary">
+            <%= link_to 'Edit Activity', edit_activity_path(@activity) %>
+            </button>
+        <% end %>
+    <% end %>
+
+    <button type="button" class="btn btn-outline-primary">
+        <%= link_to 'Back', activities_path %>
+    </button>
+
+    <br>
+</div>

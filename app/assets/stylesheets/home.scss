@@ -4,21 +4,21 @@
 
 // mobile devices 
 @media only screen and (max-width: 600px) {
-    img {
+    .hero_image {
         width: 100vw;
     }
 }
 
 // tablets and ipads  
 @media only screen and (min-width: 600px) {
-    img {
+    .hero_image {
         width: 100vw;
     }
 }
 
 // Set formatting for desktop screen sizes  
 @media only screen and (min-width: 1200px) {
-    img {
+    .hero_image {
         height: 92vh;
     }
 }

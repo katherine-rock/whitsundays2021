@@ -13,7 +13,7 @@
     <% end %>
 
     <div class="field">
-      <%= form.label :title %><%= "*"%>
+      <%= form.label :activity %>
       <%= form.text_field :title %>
     </div>
 
@@ -22,14 +22,16 @@
       <%= form.text_area :description %>
     </div>
 
-    <div class="field">
-      <%= form.label :date %>
-      <%= form.date_field :date %>
-    </div>
+    <div class="date_time">
+      <div class="field">
+        <%= form.label :date %>
+        <%= form.date_field :date %>
+      </div>
 
-    <div class="field">
-      <%= form.label :time %>
-      <%= form.time_field :time %>
+      <div class="field">
+        <%= form.label :time %>
+        <%= form.time_field :time %>
+      </div>
     </div>
 
     <br>
