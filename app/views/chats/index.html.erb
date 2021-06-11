@@ -1,17 +1,50 @@
-<h1>Chat</h1>
- <% @chats.each do | chat | %>
+<div class="container">
+    <h1>Chat</h1>
 
-    <% if chat.comment? %>
-        <%= chat.comment %>
-    <% else %>
-        <&nbsp;>
+    <button type="button" class="btn btn-outline-primary">  
+        <%= link_to 'Add a New Comment', new_chat_path %>
+    </button>
+
+    <% @chats.each do | chat | %>
+    <div class="card">
+
+    <div class="card-body">
+        <% if chat.comment? %>
+            <%= chat.comment %>
+        <% else %>
+            <&nbsp;>
+        <% end %>
+    </div>
+
+    <div class="card-footer">
+        <span>From </span>
+        <%= chat.user.firstname %> 
+        <span>at </span>
+        <%= chat.created_at.strftime("%l:%M %P") %>
+        <span>on </span>
+        <%= chat.created_at.strftime("%A %-d-%b-%Y") %> 
+
+    <span class="chat_buttons">
+        <button type="button" class="btn btn-outline-primary">
+            <%= link_to 'View Details', chat %>
+        </button>
+
+        <% if user_signed_in? %>
+            <% if chat.user_id == current_user.id %>
+                <button type="button" class="btn btn-outline-primary">
+                    <%= link_to 'Edit', edit_chat_path(chat) %>
+                </button>
+
+                <button type="button" class="btn btn-outline-primary">
+                    <%= link_to 'Delete', chat, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </button>
+            <% end %>
+        <% end %>
+    </span>
+
+
+    </div>
+    </div>
     <% end %>
 
-    <span>From </span>
-    <%= chat.user.firstname %> 
-    <span>at </span>
-    <%= chat.created_at.strftime("%l:%M %P") %>
-    <span>on </span>
-    <%= chat.created_at.strftime("%A %-d-%b-%Y") %> 
-
-<% end %>
+</div>
