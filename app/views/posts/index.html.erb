@@ -11,7 +11,7 @@
         <% if post.title? %>
             <%= post.title %>
         <% else %>
-            <&nbsp;>
+            &nbsp;
         <% end %>
         </h5>
 
@@ -19,7 +19,7 @@
         <% if post.comment? %>
             <%= sanitize(post.comment) %>
         <% else %>
-            <&nbsp;>
+            &nbsp;
         <% end %>
         </p>
 

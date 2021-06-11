@@ -1,6 +1,6 @@
 class LinksController < ApplicationController
     before_action :set_link, only: %i[ show edit update destroy ]
-    # before_action :authenticate_user!, only: %i[ new create edit update destroy ]
+    before_action :authenticate_user!
   
     def index
       @links = Link.all.order(:category)

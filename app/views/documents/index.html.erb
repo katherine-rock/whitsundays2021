@@ -27,7 +27,7 @@
         </p>
 
 <button type="button" class="btn btn-outline-primary"> 
-    <%= link_to "Download #{document.title}", rails_blob_url(document.file, disposition: "attachment") %>
+    <%= link_to "Download", rails_blob_url(document.file, disposition: "attachment") %>
 </button>
 </div>
 
