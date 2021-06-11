@@ -1,57 +1,59 @@
-<h1>Contact</h1>
+<div class="container">
+    <h1>Contact</h1>
 
-<p>
-    <strong>First name:</strong>
-    <%= sanitize(@contact.firstname) %>
-</p>
+    <p>
+        <strong>First name:</strong>
+        <%= sanitize(@contact.firstname) %>
+    </p>
 
-<p>
-    <strong>Last name:</strong>
-    <%= sanitize(@contact.lastname) %>
-</p>
+    <p>
+        <strong>Last name:</strong>
+        <%= sanitize(@contact.lastname) %>
+    </p>
 
-<p>
-    <strong>Category:</strong>
-    <%= sanitize(@contact.category) %>
-</p>
+    <p>
+        <strong>Category:</strong>
+        <%= sanitize(@contact.category) %>
+    </p>
 
-<p>
-    <strong>Email:</strong>
-    <%= sanitize(@contact.email) %>
-</p>
+    <p>
+        <strong>Email:</strong>
+        <%= sanitize(@contact.email) %>
+    </p>
 
-<p>
-    <strong>Phone:</strong>
-    <%= sanitize(@contact.phone) %>
-</p>
+    <p>
+        <strong>Phone:</strong>
+        <%= sanitize(@contact.phone) %>
+    </p>
 
-<p>
-    <strong>Company:</strong>
-    <%= sanitize(@contact.company) %>
-</p>
+    <p>
+        <strong>Company:</strong>
+        <%= sanitize(@contact.company) %>
+    </p>
 
-<p>
-    <strong>Comment:</strong>
-    <%= sanitize(@contact.comment) %>
-</p>
+    <p>
+        <strong>Comment:</strong>
+        <%= sanitize(@contact.comment) %>
+    </p>
 
-<p>
-    <strong>Added by:</strong>
-    <%= @contact.user.firstname %>
-</p>
+    <p>
+        <strong>Added by:</strong>
+        <%= @contact.user.firstname %>
+    </p>
 
-<br>
+    <br>
 
-<% if user_signed_in? %>
-    <% if @contact.user_id == current_user.id %>
-        <button type="button" class="btn btn-info">
-        <%= link_to 'Edit', edit_contact_path(@contact) %>
-        </button>
+    <% if user_signed_in? %>
+        <% if @contact.user_id == current_user.id %>
+            <button type="button" class="btn btn-outline-primary">
+            <%= link_to 'Edit', edit_contact_path(@contact) %>
+            </button>
+        <% end %>
     <% end %>
-<% end %>
 
-<button type="button" class="btn btn-info">
-<%= link_to 'Back', contacts_path %>
-</button>
+    <button type="button" class="btn btn-outline-primary">
+        <%= link_to 'Back', contacts_path %>
+    </button>
 
-<br>
+    <br>
+</div>

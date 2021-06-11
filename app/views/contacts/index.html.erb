@@ -1,46 +1,99 @@
-<h1>Contacts</h1>
- <% @contacts.each do | contact | %>
+<div class="container">
+    <h1>Contacts</h1>
+    <div class="main">
+    <% @contacts.each do | contact | %>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">
+                <% if contact.firstname?%>
+                    <%= contact.firstname %>
+                <% else %>
+                    &nbsp;
+                <% end %>
+                <%= " "%>
+                <% if contact.lastname? %>
+                    <%= contact.lastname %>
+                <% else %>
+                    &nbsp;
+                <% end %>
+            </h5>
 
-    <% if contact.firstname? %>
-        <%= contact.firstname %>
-    <% else %>
-        &nbsp;
-    <% end %>
+            <p class="card-text">
+                <strong><%= "Company:" %></strong>
+                <% if contact.company? %>
+                    <%= contact.company %>
+                <% else %>
+                    <%= "N/A" %>
+                <% end %>
+            </p>
 
-    <% if contact.lastname? %>
-        <%= contact.lastname %>
-    <% else %>
-        &nbsp;
-    <% end %>
+            <p class="card-text">
+                <strong><%= "Category:" %></strong>
+                <% if contact.category? %>
+                    <%= contact.category %>
+                <% else %>
+                    <%= "N/A" %>
+                <% end %>
+            </p>
 
-    <% if contact.category? %>
-        <%= contact.category %>
-    <% else %>
-        &nbsp;
-    <% end %>
+            <p class="card-text">
+                <strong><%= "Email:" %></strong>
+                <% if contact.email? %>
+                    <%= contact.email %>
+                <% else %>
+                    <%= "N/A" %>
+                <% end %>
+            </p>
 
-    <% if contact.email? %>
-        <%= contact.email %>
-    <% else %>
-        &nbsp;
-    <% end %>
+            <p class="card-text">
+                <strong><%= "Phone:" %></strong>
+                <% if contact.phone? %>
+                    <%= contact.phone %>
+                <% else %>
+                    <%= "N/A" %>
+                <% end %>
+            </p>
 
-    <% if contact.phone? %>
-        <%= contact.phone %>
-    <% else %>
-        &nbsp;
-    <% end %>
+            <p class="card-text">
+                <strong><%= "Comment:" %></strong>
+                <% if contact.comment? %>
+                    <%= contact.comment %>
+                <% else %>
+                    <%= "Nil" %>
+                <% end %>
+            </p>
+            </div>
 
-    <% if contact.company? %>
-        <%= contact.company %>
-    <% else %>
-        &nbsp;
-    <% end %>
+            <div class="card-footer">
+                <span class="contact_buttons">
+                    <button type="button" class="btn btn-outline-primary">
+                        <%= link_to 'View Details', contact %>
+                    </button>
 
-    <% if contact.comment? %>
-        <%= contact.comment %>
-    <% else %>
-        &nbsp;
-    <% end %>
+                    <% if user_signed_in? %>
+                        <% if contact.user_id == current_user.id %>
+                            <button type="button" class="btn btn-outline-primary">
+                                <%= link_to 'Edit', edit_contact_path(contact) %>
+                            </button>
 
-<% end %>
+                            <button type="button" class="btn btn-outline-primary">
+                                <%= link_to 'Delete', contact, method: :delete, data: { confirm: 'Are you sure?' } %>
+                            </button>
+                        <% end %>
+                    <% end %>
+                </span>
+            </div>
+
+            </div>
+            <% end %>
+
+</div>
+</div>
+
+<div class="container">
+    <button type="button" class="btn btn-outline-primary">  
+        <%= link_to 'Add a New Contact', new_contact_path %>
+    </button>
+</div>
+
+<br>
