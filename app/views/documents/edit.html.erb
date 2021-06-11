@@ -1,10 +1,12 @@
-<h1>Edit Document</h1>
+<div class="container">    
+    <h1>Edit Document</h1>
 
-<%= render 'form', document: @document %>
+    <%= render 'form', document: @document %>
 
-<section class="grouped_buttons">
-    <button type="button" class="btn btn-info">
-        <%= link_to 'Show', @document %> 
-    </button >
+    <section class="grouped_buttons">
+        <button type="button" class="btn btn-outline-primary">
+            <%= link_to 'View Details', @document %> 
+        </button >
 
-</section>
+    </section>
+</div>

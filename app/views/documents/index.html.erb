@@ -1,25 +1,66 @@
-<h1>Documents</h1>
- <% @documents.each do | document | %>
+<div class="container">
+    <h1>Documents</h1>
+    <div class="main">
+    <% @documents.each do | document | %>
+        <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">
+                <% if document.title? %>
+                    <%= document.title %>
+                <% else %>
+                    &nbsp;
+                <% end %>
+            </h5>
+        <p class="card-text">
+            <% if document.category? %>
+            <%= sanitize(document.category) %>
+        <% else %>
+            &nbsp;
+        <% end %>
 
-    <% if document.title? %>
-        <strong>Title: </strong><%= document.title %>
-    <% else %>
-        <&nbsp;>
+        <p class="card-text">
+            <% if document.description? %>
+                <%= sanitize(document.description) %>
+            <% else %>
+                &nbsp;
+            <% end %>
+        </p>
+
+<button type="button" class="btn btn-outline-primary"> 
+    <%= link_to "Download #{document.title}", rails_blob_url(document.file, disposition: "attachment") %>
+</button>
+</div>
+
+            <div class="card-footer">
+                <span class="contact_buttons">
+                    <button type="button" class="btn btn-outline-primary">
+                        <%= link_to 'View Details', document %>
+                    </button>
+
+                    <% if user_signed_in? %>
+                        <% if document.user_id == current_user.id %>
+                            <button type="button" class="btn btn-outline-primary">
+                                <%= link_to 'Edit', edit_document_path(document) %>
+                            </button>
+
+                            <button type="button" class="btn btn-outline-primary">
+                                <%= link_to 'Delete', document, method: :delete, data: { confirm: 'Are you sure?' } %>
+                            </button>
+                        <% end %>
+                    <% end %>
+                </span>
+            </div>
+
+</div>
+
     <% end %>
+</div>
+</div>
 
-    <% if document.description? %>
-        <strong>Description: </strong><%= sanitize(document.description) %>
-    <% else %>
-        <&nbsp;>
-    <% end %>
+<div class="container">
+    <button type="button" class="btn btn-outline-primary">  
+        <%= link_to 'Upload a New Document', new_document_path %>
+    </button>
+</div>
 
-    <% if document.category? %>
-        <strong>Category: </strong><%= sanitize(document.category) %>
-    <% else %>
-        <&nbsp;>
-    <% end %>
-
-
-<%= link_to "Download #{document.title}", rails_blob_url(document.file, disposition: "attachment") %>
-
-<% end %>
+<br>
