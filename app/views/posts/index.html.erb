@@ -1,27 +1,58 @@
-<h1>Photos</h1>
- <% @posts.each do | post | %>
+<div class="container">
+    <h1>Photos</h1>
+    <div class="main">
+    <% @posts.each do | post | %>
+        <div class="card" style="width: 18rem;">
+        <%= image_tag url_for(post.photo), class:"card-img-top" %>
+  
+        <div class="card-body">
 
-    <% if post.title? %>
-        <strong>Title: </strong><%= post.title %>
-    <% else %>
-        <&nbsp;>
+        <h5 class="card-title">
+        <% if post.title? %>
+            <%= post.title %>
+        <% else %>
+            <&nbsp;>
+        <% end %>
+        </h5>
+
+        <p class="card-text">
+        <% if post.comment? %>
+            <%= sanitize(post.comment) %>
+        <% else %>
+            <&nbsp;>
+        <% end %>
+        </p>
+
+<div class="card_buttons">
+    <button type="button" class="btn btn-outline-primary">
+        <%= link_to 'Download', rails_blob_url(post.photo, disposition: "attachment") %> 
+    </button>
+
+    <button type="button" class="btn btn-outline-primary">
+        <%= link_to 'View Details', post %>
+    </button>    
+        
+        <% if user_signed_in? %>
+        <% if post.user_id == current_user.id %>
+            <button type="button" class="btn btn-outline-primary">
+            <%= link_to 'Edit', edit_post_path(post) %>
+            </button>
+            <button type="button" class="btn btn-outline-primary">
+            <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </button>
+        <% end %>
     <% end %>
+    </div>
 
-    <% if post.comment? %>
-        <strong>Comment: </strong><%= sanitize(post.comment) %>
-    <% else %>
-        <&nbsp;>
+      </div>
+</div>
+
     <% end %>
+    </div>
+</div>
 
-<%# Update this later to be managed in CSS or the pics will be tiny on mobile %>
-    <%= image_tag url_for(post.photo), style:'width:20%' %>
-
-    <%= link_to 'Download photo', rails_blob_url(post.photo, disposition: "attachment") %> 
-    
-    <% if user_signed_in? %>
-    <% if post.user_id == current_user.id %>
-        <%= link_to 'Edit', edit_post_path(post) %>
-    <% end %>
-<% end %>
-
-<% end %>
+<div class="container">
+    <button type="button" class="btn btn-outline-primary">  
+        <%= link_to 'Add a New Photo', new_post_path %>
+    </button>
+</div>

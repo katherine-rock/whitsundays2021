@@ -1,10 +1,12 @@
-<h1>Edit Photo Post</h1>
+<div class="container">
+    <h1>Edit Photo Post</h1>
 
-<%= render 'form', post: @post %>
+    <%= render 'form', post: @post %>
 
-<section class="grouped_buttons">
-    <button type="button" class="btn btn-info">
-        <%= link_to 'Show', @post %> 
-    </button >
+    <section class="grouped_buttons">
+        <button type="button" class="btn btn-outline-primary">
+            <%= link_to 'View Photo Post', @post %> 
+        </button >
 
-</section>
+    </section>
+</div>

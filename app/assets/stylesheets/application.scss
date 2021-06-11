@@ -20,6 +20,14 @@
      margin-top: 1em;
  }
 
+ .card {
+    margin: 1em;
+}
+
+.card_buttons button {
+    margin-bottom: .4em;
+}
+
  @media only screen and (max-width: 600px) {
     .field label, .field input, .field textarea {
         min-width: 90%;
@@ -39,6 +47,18 @@
     .date_time {
         max-width: 50%;
     }
+
+    // Main content section to display image cards
+    .main {
+        width: 100%;
+        display: inline-flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        align-content: center;
+        max-width: max-content;
+        justify-content: center;
+}
 }
 
 // Set formatting for desktop screen sizes  
