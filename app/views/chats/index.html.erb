@@ -6,8 +6,7 @@
     </button>
 
     <% @chats.each do | chat | %>
-    <div class="card">
-
+    <div class="card" style="width: 100%;">
     <div class="card-body">
         <% if chat.comment? %>
             <%= chat.comment %>

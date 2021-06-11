@@ -1,62 +1,77 @@
 <div class="container">
     <h1>Links</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-            <th>Category</th>
-            <th>Title</th>
-            <th>URL</th>
-            <th>Description</th>
-            <th colspan="3">Options</th>
-            </tr>
-        </thead>
-
-    <tbody>
+    <div class="main">
         <% @links.each do | link | %>
-    <tr>
 
-    <td>
-    <% if link.category? %>
-        <%= sanitize(link.category) %>
-    <% else %>
-        &nbsp;
-    <% end %>
-    </td>
+        <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">
+                <% if link.title? && link.link? %>
+                    <%= link_to "#{link.title}", link.link, target: "blank" %>
+                <% else %>
+                    &nbsp;
+                <% end %>
+            </h5>
+    
+            <p class="card-text">
+                <strong>URL: </strong>
+                <% if link.link? %>
+                    <%= link.link %>
+                <% else %>
+                    &nbsp;
+                <% end %>
+            </p>
 
-<td>
-    <% if link.title? && link.link? %>
-        <%= link_to "#{link.title}", link.link, target: "blank" %>
-    <% else %>
-        &nbsp;
-    <% end %>
-    </td>
+            <p class="card-text">
+                <strong>Category: </strong>
+                <% if link.category? %>
+                    <%= sanitize(link.category) %>
+                <% else %>
+                    &nbsp;
+                <% end %>
+            </p>
 
-<td>
-    <% if link.link? %>
-        <%= link.link %>
-    <% else %>
-        &nbsp;
-    <% end %>
-    </td>
+            <p class="card-text">
+                <strong>Description: </strong>    
+                <% if link.description? %>
+                    <%= sanitize(link.description) %>
+                <% else %>
+                    &nbsp;
+                <% end %>
+            </p>
+            </div>
 
-<td>
-    <% if link.description? %>
-        <%= sanitize(link.description) %>
-    <% else %>
-        &nbsp;
-    <% end %>
-</td>
-        <td><%= link_to 'View Details', link %></td>
-        <td><%= link_to 'Edit', edit_link_path(link) %></td>
-        <td><%= link_to 'Delete', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+            <div class="card-footer">
+                <span class="link_buttons">
+                    <button type="button" class="btn btn-outline-primary"> 
+                        <%= link_to 'View Details', link %>
+                    </button>
 
-<% end %>
-    </tbody>
-    </table>
+                    <% if user_signed_in? %>
+                        <% if link.user_id == current_user.id %>
+                            <button type="button" class="btn btn-outline-primary"> 
+                                <%= link_to 'Edit', edit_link_path(link) %>
+                            </button>
 
-    <button type="button" class="btn btn-outline-primary">  
+                            <button type="button" class="btn btn-outline-primary"> 
+                                <%= link_to 'Delete', link, method: :delete, data: { confirm: 'Are you sure?' } %>
+                            </button>
+                        <% end %>
+                    <% end %>
+                </span>
+
+
+
+        </div>
+        </div>
+      <% end %>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <button type="button" class="btn btn-outline-primary"> 
         <%= link_to 'Add a New Link', new_link_path %>
     </button>
 
