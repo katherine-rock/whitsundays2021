@@ -1,24 +1,12 @@
-# README
+## Screenshots ##
+### Home page ###
+![screenshot of travel app home page](app/assets/images/screenshot_whitsundays_home.png)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Chat page ###
+![screenshot of travel app chat page](app/assets/images/screenshot_whitsundays_chat.png)
 
-Things you may want to cover:
+### Photos page ###
+![screenshot of travel app photos page](app/assets/images/screenshot_whitsundays_photos.png)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Links page ###
+![screenshot of travel app links page](app/assets/images/screenshot_whitsundays_links.png)
