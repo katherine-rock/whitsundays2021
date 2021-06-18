@@ -12,6 +12,7 @@
                 <% end %>
             </h5>
         <p class="card-text">
+            <strong>Category: </strong>
             <% if document.category? %>
             <%= sanitize(document.category) %>
         <% else %>
@@ -19,6 +20,7 @@
         <% end %>
 
         <p class="card-text">
+            <strong>Description: </strong>
             <% if document.description? %>
                 <%= sanitize(document.description) %>
             <% else %>
