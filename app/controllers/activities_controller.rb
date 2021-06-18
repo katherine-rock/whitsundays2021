@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @activities = Activity.all.order(:date)
+    @activities = Activity.all.order(:date, :time)
   end
 
   def show
