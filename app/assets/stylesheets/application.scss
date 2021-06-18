@@ -33,7 +33,7 @@ h1 {
 }
 
  @media only screen and (max-width: 600px) {
-    .field label, .field input, .field textarea {
+    .field label, .field input, .field textarea, .field select {
         min-width: 90%;
     }
 
@@ -45,7 +45,7 @@ h1 {
 
 // tablets and ipads  
 @media only screen and (min-width: 600px) {
-    .field label, .field input, .field textarea {
+    .field label, .field input, .field textarea, .field select {
         min-width: 50%;
     }
     .date_time {
@@ -75,4 +75,5 @@ h1 {
     .chat_buttons {
         margin-left: 3em;
     }
+
 }
