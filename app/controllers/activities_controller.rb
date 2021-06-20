@@ -1,6 +1,12 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
+  rescue_from Pundit::NotAuthorizedError, with: :unauthorised 
+
+  def unauthorised
+    flash[:alert] = "Sorry! You do not have access to do that."
+    redirect_to activities_path
+  end
 
   def index
     @activities = Activity.all.order(:date, :time)
@@ -10,6 +16,7 @@ class ActivitiesController < ApplicationController
   end
 
   def edit
+    authorize @activity
   end
 
   def new
@@ -43,6 +50,7 @@ class ActivitiesController < ApplicationController
   end
 
   def destroy
+    authorize @activity
     @activity.destroy
     respond_to do |format|
         format.html { redirect_to activities_url, notice: "Activity listing has been successfully deleted." }

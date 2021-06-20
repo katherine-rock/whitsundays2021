@@ -1,0 +1,9 @@
+class ChatPolicy < ApplicationPolicy
+	def edit?
+	  user == record.user
+	end
+
+	def destroy?
+		user == record.user
+	end
+end

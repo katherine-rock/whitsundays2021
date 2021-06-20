@@ -1,6 +1,12 @@
 class DocumentsController < ApplicationController
   before_action :set_document, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
+  rescue_from Pundit::NotAuthorizedError, with: :unauthorised 
+
+  def unauthorised
+    flash[:alert] = "Sorry! You do not have access to do that."
+    redirect_to documents_path
+  end
 
   def index
     @documents = Document.all
@@ -10,6 +16,7 @@ class DocumentsController < ApplicationController
   end
 
   def edit
+    authorize @document
   end
 
   def new
@@ -43,6 +50,7 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
+    authorize @document
     @document.destroy
     respond_to do |format|
         format.html { redirect_to documents_url, notice: "Document has been successfully deleted." }

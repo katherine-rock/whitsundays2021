@@ -1,6 +1,12 @@
 class ContactsController < ApplicationController
     before_action :set_contact, only: %i[ show edit update destroy ]
     before_action :authenticate_user!
+    rescue_from Pundit::NotAuthorizedError, with: :unauthorised 
+
+    def unauthorised
+      flash[:alert] = "Sorry! You do not have access to do that."
+      redirect_to contacts_path
+    end
   
     def index
       @contacts = Contact.all
@@ -10,6 +16,7 @@ class ContactsController < ApplicationController
     end
   
     def edit
+      authorize @contact
     end
   
     def new
@@ -43,6 +50,7 @@ class ContactsController < ApplicationController
     end
   
     def destroy
+      authorize @contact
       @contact.destroy
       respond_to do |format|
           format.html { redirect_to contacts_url, notice: "Contact has been successfully deleted." }

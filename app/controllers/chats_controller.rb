@@ -1,6 +1,12 @@
 class ChatsController < ApplicationController
     before_action :set_chat, only: %i[ show edit update destroy ]
     before_action :authenticate_user!
+    rescue_from Pundit::NotAuthorizedError, with: :unauthorised 
+
+    def unauthorised
+      flash[:alert] = "Sorry! You do not have access to do that."
+      redirect_to chats_path
+    end
   
     def index
       @chats = Chat.all.sort.reverse
@@ -10,6 +16,7 @@ class ChatsController < ApplicationController
     end
   
     def edit
+      authorize @chat
     end
   
     def new
@@ -43,6 +50,7 @@ class ChatsController < ApplicationController
     end
   
     def destroy
+      authorize @chat
       @chat.destroy
       respond_to do |format|
           format.html { redirect_to chats_url, notice: "Comment has been successfully deleted." }

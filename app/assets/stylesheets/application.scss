@@ -23,6 +23,15 @@ h1 {
  .card {
     margin: 1em;
 }
+.btn-outline-primary a:hover{
+    color: white;
+    font-style: italic;
+} 
+
+.nav-link:hover {
+    text-decoration: underline;
+    font-weight: bold;
+}
 
 .card_buttons button {
     margin-bottom: .4em;

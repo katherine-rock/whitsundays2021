@@ -1,6 +1,12 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
+  rescue_from Pundit::NotAuthorizedError, with: :unauthorised 
+
+    def unauthorised
+      flash[:alert] = "Sorry! You do not have access to do that."
+      redirect_to posts_path
+    end
 
   def index
     @posts = Post.order(:created_at).reverse_order
@@ -10,6 +16,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    authorize @post
   end
 
   def new
@@ -43,6 +50,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    authorize @post
     @post.destroy
     respond_to do |format|
         format.html { redirect_to posts_url, notice: "Photo post has been successfully deleted." }
