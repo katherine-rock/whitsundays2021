@@ -1,6 +1,12 @@
 <div class="container">
     <h1>Contacts</h1>
     <div class="main">
+        <div class="container">
+            <button type="button" class="btn btn-outline-primary">  
+                <%= link_to 'Add a New Contact', new_contact_path %>
+            </button>
+        </div>
+        
     <% @contacts.each do | contact | %>
     <div class="card" style="width: 18rem;">
         <div class="card-body">
@@ -88,12 +94,6 @@
             <% end %>
 
 </div>
-</div>
-
-<div class="container">
-    <button type="button" class="btn btn-outline-primary">  
-        <%= link_to 'Add a New Contact', new_contact_path %>
-    </button>
 </div>
 
 <br>

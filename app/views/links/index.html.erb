@@ -1,9 +1,15 @@
 <div class="container">
     <h1>Links</h1>
     <div class="main">
+        <div class="container">
+            <button type="button" class="btn btn-outline-primary"> 
+                <%= link_to 'Add a New Link', new_link_path %>
+            </button>
+        </div>
+
         <% @links.each do | link | %>
 
-        <div class="card" style="width: 18rem;">
+        <div class="card card-links">
         <div class="card-body">
             <h5 class="card-title">
                 <% if link.title? && link.link? %>
@@ -66,13 +72,4 @@
         </div>
       <% end %>
     </div>
-</div>
-
-
-
-<div class="container">
-    <button type="button" class="btn btn-outline-primary"> 
-        <%= link_to 'Add a New Link', new_link_path %>
-    </button>
-
 </div>

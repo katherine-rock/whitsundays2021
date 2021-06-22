@@ -1,6 +1,12 @@
 <div class="container">
     <h1>Photos</h1>
     <div class="main">
+        <div class="container">
+            <button type="button" class="btn btn-outline-primary">  
+                <%= link_to 'Add a New Photo', new_post_path %>
+            </button>
+        </div>
+
     <% @posts.each do | post | %>
         <div class="card" style="width: 18rem;">
         <%= image_tag url_for(post.photo), class:"card-img-top" %>
@@ -29,7 +35,7 @@
     </button>
 
     <button type="button" class="btn btn-outline-primary">
-        <%= link_to 'View Details', post %>
+        <%= link_to 'View Full Size', post %>
     </button>    
         
         <% if user_signed_in? %>
@@ -49,10 +55,4 @@
 
     <% end %>
     </div>
-</div>
-
-<div class="container">
-    <button type="button" class="btn btn-outline-primary">  
-        <%= link_to 'Add a New Photo', new_post_path %>
-    </button>
 </div>

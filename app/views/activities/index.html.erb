@@ -1,9 +1,16 @@
 <div class="container">
     <h1>Itinerary</h1>
+    <p>There's a bug in the database so our activities are being sorted by date but not by time.</p>
     <div class="main">
 
+        <div class="container">
+            <button type="button" class="btn btn-outline-primary">  
+                <%= link_to 'Add a New Activity', new_activity_path %>
+            </button>
+        </div>
+
     <% @activities.each do | activity | %>
-        <div class="card" style="width: 100%;">
+        <div class="card card-activity">
         <div class="card-body">
             <h5 class="card-title">
                 <% if activity.title? %>
@@ -66,9 +73,3 @@
 </div>
 
 <br>
-
-<div class="container">
-    <button type="button" class="btn btn-outline-primary">  
-        <%= link_to 'Add a New Activity', new_activity_path %>
-    </button>
-</div>

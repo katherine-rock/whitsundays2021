@@ -1,6 +1,12 @@
 <div class="container">
     <h1>Documents</h1>
     <div class="main">
+        <div class="container">
+            <button type="button" class="btn btn-outline-primary">  
+                <%= link_to 'Upload a New Document', new_document_path %>
+            </button>
+        </div>
+
     <% @documents.each do | document | %>
         <div class="card" style="width: 18rem;">
         <div class="card-body">
@@ -19,7 +25,7 @@
             &nbsp;
         <% end %>
 
-        <p class="card-text">
+        <p class="card-text" style="min-height: 4rem">
             <strong>Description: </strong>
             <% if document.description? %>
                 <%= sanitize(document.description) %>
@@ -28,15 +34,17 @@
             <% end %>
         </p>
 
-<button type="button" class="btn btn-outline-primary"> 
-    <%= link_to "Download", rails_blob_url(document.file, disposition: "attachment") %>
-</button>
+
 </div>
 
             <div class="card-footer">
                 <span class="contact_buttons">
-                    <button type="button" class="btn btn-outline-primary">
+                    <%# <button type="button" class="btn btn-outline-primary">
                         <%= link_to 'View Details', document %>
+                    <%# </button> %>
+
+                    <button type="button" class="btn btn-outline-primary"> 
+                        <%= link_to "Download", rails_blob_url(document.file, disposition: "attachment") %>
                     </button>
 
                     <% if user_signed_in? %>
@@ -57,12 +65,6 @@
 
     <% end %>
 </div>
-</div>
-
-<div class="container">
-    <button type="button" class="btn btn-outline-primary">  
-        <%= link_to 'Upload a New Document', new_document_path %>
-    </button>
 </div>
 
 <br>

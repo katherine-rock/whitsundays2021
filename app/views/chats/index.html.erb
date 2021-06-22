@@ -17,16 +17,16 @@
 
     <div class="card-footer">
         <span>From </span>
-        <%= chat.user.firstname %> 
+        <strong><%= chat.user.firstname %></strong> 
         <span>at </span>
         <%= chat.created_at.strftime("%l:%M %P") %>
         <span>on </span>
         <%= chat.created_at.strftime("%A %-d-%b-%Y") %> 
 
     <span class="chat_buttons">
-        <button type="button" class="btn btn-outline-primary">
+        <%# <button type="button" class="btn btn-outline-primary">
             <%= link_to 'View Details', chat %>
-        </button>
+        <%# </button> %> 
 
         <% if user_signed_in? %>
             <% if chat.user_id == current_user.id %>
